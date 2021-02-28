@@ -29,5 +29,4 @@ struct DSU {
 	int size(int u){
 		return -link[root(x)];
 	}
-  
 };
