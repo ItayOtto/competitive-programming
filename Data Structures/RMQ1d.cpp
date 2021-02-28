@@ -3,7 +3,6 @@
 //2. build_log();
 //3. build_table();
 
-
 const int K = 18; //ceil(log(array size))
 struct RMQ1d{
 	int n; //mxn must be a bit larger than n
