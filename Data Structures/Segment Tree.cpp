@@ -1,4 +1,4 @@
-struct ST {
+struct ST { 
 	ll func(ll a, ll b) { return min(a, b); } // (any associative func)
 	ll init_val = 1e18;
 
