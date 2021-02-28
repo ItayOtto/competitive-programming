@@ -1,4 +1,4 @@
-const int K = 9; //ceil(log(array size))
+const int K = 9; //ceil(log(array size)) 
 struct RMQ2d{
 	int n,m; //mxn must be a bit larger
 	int LOG[mxn];
