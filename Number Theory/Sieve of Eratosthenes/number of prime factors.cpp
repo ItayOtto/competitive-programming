@@ -1,4 +1,4 @@
-// number of **not unique** prime factors
+// number of **not distinct** prime factors
 //val[12]=3
 //make sure to pre-calc only once
 //val[x] = # of prime factors
