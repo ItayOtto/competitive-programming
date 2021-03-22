@@ -1,5 +1,5 @@
 // make sure to pre-calc this only once!
-// val[x] = # of unique prime factors of x
+// val[x] = # of distinct prime factors of x
 const int N=2e7+3;
 int val[N]; //this line needs to be in the global area
 vi primes;
