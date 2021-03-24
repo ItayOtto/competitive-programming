@@ -1,8 +1,14 @@
-vi d = a;
-sort(d.begin(), d.end());
-d.resize(unique(all(d)) - d.begin());
-for (int i = 0; i < n; ++i) {
-  a[i] = lower_bound(all(d), a[i]) - d.begin();
+//b is the compressed array
+//a left untouched
+int n = a.size();
+vector<int> b(n);
+vector<pair<int, int>> pairs(n);
+for(int i = 0; i < n; ++i) {
+	pairs[i] = {a[i], i};
 }
-//original value of a[i] can be obtained through d[a[i]]
-//compressed array is now a[i]
+sort(pairs.begin(), pairs.end());
+int nxt = 0;
+for(int i = 0; i < n; ++i) {
+	if(i > 0 && pairs[i-1].first != pairs[i].first) nxt++;
+	b[pairs[i].second] = nxt;
+}
