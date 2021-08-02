@@ -1,16 +1,21 @@
 // instructions, pay attention:
 //1. input(i, val); **work with range[0,n)
-//2. build_log();
-//3. build_table();
+//2. build_table();
 
-const int K = 18; //ceil(log(array size))
 struct RMQ1d{
-	int n; //mxn must be a bit larger than n
-	int LOG[mxn];
-	ll st[mxn][K];
+	int n;
+	int mxnsz;
+	int K;
+	vi LOG;
+	vector<vll> st;
 	
 	RMQ1d(int sz){
 		n=sz;
+		mxnsz=n+10;
+		LOG.resize(mxnsz);
+		build_log();
+		K=LOG[n]+1;
+		st=vector<vll>(mxnsz,vll(K));
 	}
 
 	void input(int pos, ll val){
@@ -19,7 +24,7 @@ struct RMQ1d{
 
 	void build_log(){
 		LOG[1]=0;
-		for(int i=2;i<mxn;i++){
+		for(int i=2;i<n+5;i++){
 			LOG[i]=LOG[i/2]+1;
 		}
 	}
@@ -27,13 +32,13 @@ struct RMQ1d{
 	void build_table(){
 		for(int j=1;j<=K;j++){
 			for(int i=0;i+(1<<j)<=n;i++){
-				st[i][j]=min(st[i][j-1], st[i+(1<<(j-1))][j-1]);
+				st[i][j]=gcd(st[i][j-1], st[i+(1<<(j-1))][j-1]);
 			}
 		}
 	}
 
-	ll min_query(int a, int b){ //min value in range [a,b]
+	ll gcd_query(int a, int b){ //gcd value in range [a,b]
 		int j=LOG[b-a+1];
-		return min(st[a][j],st[b-(1<<j)+1][j]);
+		return gcd(st[a][j],st[b-(1<<j)+1][j]);
 	}
 };
